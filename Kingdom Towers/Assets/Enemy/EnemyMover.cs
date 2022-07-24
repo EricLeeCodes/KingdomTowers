@@ -10,7 +10,7 @@ public class EnemyMover : MonoBehaviour
     [Range(0f, 5f)] //A negative value is game-breaking so add a range for it. 
     float speed = 1f;
 
-    void Start()
+    void OnEnable()
     {
        FindPath();
        ReturnToStart();
@@ -61,6 +61,6 @@ public class EnemyMover : MonoBehaviour
             }
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
