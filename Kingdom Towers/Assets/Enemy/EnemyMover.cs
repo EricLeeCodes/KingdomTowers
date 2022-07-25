@@ -9,6 +9,7 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] 
     [Range(0f, 5f)] //A negative value is game-breaking so add a range for it. 
     float speed = 1f;
+    Enemy enemy;
 
     void OnEnable()
     {
@@ -16,6 +17,11 @@ public class EnemyMover : MonoBehaviour
        ReturnToStart();
        StartCoroutine(PrintWaypointName());
  
+    }
+
+    private void Start()
+    {
+       enemy = GetComponent<Enemy>();
     }
 
     void FindPath()
@@ -60,7 +66,7 @@ public class EnemyMover : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
-
+        enemy.StealGold();
         gameObject.SetActive(false);
     }
 }
